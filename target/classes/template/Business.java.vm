@@ -1,0 +1,15 @@
+package ${package}.${moduleName}business;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${package}.${moduleName}dao.entity.${className}Entity;
+import ${mainPath}.commons.utils.page.PageUtils;
+
+
+import java.util.Map;
+
+
+public interface ${className}Business extends IService<${className}Entity> {
+
+    PageUtils queryPage(Map<String, Object> params);
+}
+

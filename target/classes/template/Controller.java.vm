@@ -1,0 +1,67 @@
+package ${package}.${moduleName}controller;
+
+import java.util.Arrays;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import ${package}.${moduleName}dao.entity.${className}Entity;
+import ${package}.${moduleName}business.${className}Business;
+import ${mainPath}.commons.utils.page.PageUtils;
+import ${mainPath}.commons.model.R;
+
+
+@RestController
+@RequestMapping("${moduleName}/${pathName}")
+public class ${className}Controller {
+
+    @Autowired
+    private ${className}Business ${classname}Business;
+
+    /**
+     * 列表
+     */
+    @GetMapping("/list")
+    public R list(@RequestParam Map<String, Object> params){
+        PageUtils page = ${classname}Business.queryPage(params);
+        return R.ok().put("page", page);
+    }
+
+
+    /**
+     * 信息
+     */
+    @GetMapping("/info/{${pk.attrname}}")
+    public R info(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
+		${className}Entity ${classname} = ${classname}Business.getById(${pk.attrname});
+        return R.ok(${classname});
+    }
+
+    /**
+     * 保存
+     */
+    @PostMapping("/save")
+    public R save(@RequestBody ${className}Entity ${classname}){
+		${classname}Business.save(${classname});
+        return R.ok();
+    }
+
+    /**
+     * 修改
+     */
+    @PostMapping("/update")
+    public R update(@RequestBody ${className}Entity ${classname}){
+		${classname}Business.updateById(${classname});
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @PostMapping("/delete")
+    public R delete(@RequestBody ${pk.attrType}[] ${pk.attrname}s){
+		${classname}Business.removeByIds(Arrays.asList(${pk.attrname}s));
+        return R.ok();
+    }
+
+}

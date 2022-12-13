@@ -1,0 +1,10 @@
+package ${package}.repository;
+import ${package}.${moduleName}dao.mappers.${className}Mapper;
+import ${package}.${moduleName}dao.entity.${className}Entity;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ${className}Repository extends ServiceImpl<${className}Mapper, ${className}Entity> {
+
+}
+
